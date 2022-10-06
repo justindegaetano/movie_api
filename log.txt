@@ -10,3 +10,39 @@ Timestamp: Wed Sep 28 2022 16:34:55 GMT-0400 (Eastern Daylight Time)
 URL: /favicon.ico
 Timestamp: Wed Sep 28 2022 16:34:55 GMT-0400 (Eastern Daylight Time)
 
+URL: /
+Timestamp: Fri Sep 30 2022 17:38:29 GMT-0400 (Eastern Daylight Time)
+
+URL: /favicon.ico
+Timestamp: Fri Sep 30 2022 17:38:29 GMT-0400 (Eastern Daylight Time)
+
+URL: /documentation
+Timestamp: Fri Sep 30 2022 17:38:50 GMT-0400 (Eastern Daylight Time)
+
+URL: /movies
+Timestamp: Fri Sep 30 2022 17:45:41 GMT-0400 (Eastern Daylight Time)
+
+URL: /favicon.ico
+Timestamp: Fri Sep 30 2022 17:45:41 GMT-0400 (Eastern Daylight Time)
+
+URL: /movies
+Timestamp: Fri Sep 30 2022 17:45:44 GMT-0400 (Eastern Daylight Time)
+
+URL: /favicon.ico
+Timestamp: Fri Sep 30 2022 17:45:44 GMT-0400 (Eastern Daylight Time)
+
+::1 - - [30/Sep/2022:21:55:15 +0000] "GET /movies HTTP/1.1" 200 350 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
+::1 - - [30/Sep/2022:21:55:15 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:8080/movies" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
+::1 - - [30/Sep/2022:21:55:22 +0000] "GET /documentation HTTP/1.1" 301 193 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
+::1 - - [30/Sep/2022:21:55:22 +0000] "GET /documentation/ HTTP/1.1" 404 153 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
+::1 - - [30/Sep/2022:21:56:20 +0000] "GET /documentation/ HTTP/1.1" 404 153 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
+::1 - - [30/Sep/2022:21:56:30 +0000] "GET /public/documentation/ HTTP/1.1" 404 160 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
+::1 - - [30/Sep/2022:21:56:44 +0000] "GET /public/documentation/ HTTP/1.1" 404 160 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
+::1 - - [30/Sep/2022:22:01:34 +0000] "GET /documentation/ HTTP/1.1" 404 153 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
+::1 - - [30/Sep/2022:22:02:15 +0000] "GET /movies HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
+::1 - - [30/Sep/2022:22:02:25 +0000] "GET /documentation/ HTTP/1.1" 200 639 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
+::1 - - [30/Sep/2022:22:04:00 +0000] "GET /brrr HTTP/1.1" 404 143 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
+::1 - - [30/Sep/2022:22:05:18 +0000] "GET /movies HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
+::ffff:192.168.68.129 - - [01/Oct/2022:16:13:33 +0000] "GET / HTTP/1.1" 200 18 "-" "Avast Antivirus"
+::ffff:192.168.68.129 - - [01/Oct/2022:16:13:42 +0000] "GET /HNAP1/ HTTP/1.1" 404 145 "-" "Avast Antivirus"
+::1 - - [03/Oct/2022:02:26:33 +0000] "GET /documentation/ HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
