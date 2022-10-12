@@ -8,6 +8,8 @@
         table, th, td{
             border: 1px solid;
             text-align: center;
+        }
+        table {
             border-collapse: collapse;
         }
     </style>
@@ -78,7 +80,7 @@
                     <td>GET</td>
                     <td>:genreName</td>
                     <td>---</td>
-                    <td>A JSON object holding data about the genre of a movie</td>
+                    <td>A JSON object holding data about a specific genre type, structure like this: {"Name":"Drama","Description":"In film and televison, drama is a category or genre of narrative finction intended to be more serious than humorous in tone."}</td>
                 </tr>
 
                 <tr>
@@ -87,7 +89,7 @@
                     <td>GET</td>
                     <td>:directorName</td>
                     <td>---</td>
-                    <td>A JSON object holding data about the data of a director</td>
+                    <td>A JSON object holding data about the data of a director, structured like this: {"Name":"David Fincher","Bio":"His films, mostly psychological thrillers and biographical dramas, have received 40 nominations at the Academy Awards, including three for him as Best Director.","Birth":"1962"}</td>
                 </tr>
 
                 <tr>
@@ -95,40 +97,41 @@
                     <td>/users</td>
                     <td>POST</td>
                     <td>---</td>
-                    <td>A JSON object holding data about the users to add, structured like this { "name" : "Vincent", "favorite movie" : [] } </td>
-                    <td>A JSON object holding data about the user that was added, structured like this { "name" : "Vincent", "favorite movie" : [] } including an ID </td>
+                    <td>A JSON object holding data about the user to be added, structured like this: {"Username":"Justintest3","Password":"password","Email":"justintest@gmail.com","Birthday":"01/01/1990"} </td>
+                    <td>A JSON object holding data about the user that was successfully added, structured like this: {"Username":"Justintest3","Password":"password","Email":"justintest@gmail.com","Birthday":"1990-01-01T05:00:00.000Z","FavoriteMovies":[],"_id":"63470b0d4e87c1bf224bb01d","__v":0} </td>
                 </tr>
 
                 <tr>
-                    <td>Allow new users update their user info</td>
-                    <td>/users/:id</td>
+                    <td>Allow users to update their user info</td>
+                    <td>/users/:Username</td>
                     <td>PUT</td>
                     <td>:id</td>
-                    <td>---</td>
-                    <td>A JSON object holding data about the updated information</td>
+                    <td>A JSON object holding data about the user to be updated, structured like this: {"Username":"Justintest3","Password":"password","Email":"justintest@gmail.com","Birthday":"01/01/1990"}</td>
+                    <td>A JSON object holding data about the user that was successfully updated, structured like this: {"Username":"Justintest3","Password":"password","Email":"justintest@gmail.com","Birthday":"1990-01-01T05:00:00.000Z","FavoriteMovies":[],"_id":"63470b0d4e87c1bf224bb01d","__v":0}</td>
                 </tr>
 
                 <tr>
                     <td>Adds movie to favorite list</td>
-                    <td>/users/:id/:movieTitle</td>
+                    <td>/users/:Username/movies/:MovieID</td>
                     <td>POST</td>
                     <td>:movieTitle</td>
-                    <td>---</td>
-                    <td>A text message indicating whether the Movie was added</td>
+                    <td>A JSON object holding data about the favorite movies of the user to be added, structured like this: {"Username":"Justintest3","FavoriteMovie": "Inception"}</td>
+                    <td>A JSON object holding data about the user that was successfully updated, structured like this: {"Username":"Justintest3","Password":"password","Email":"justintest@gmail.com","Birthday":"1990-01-01T05:00:00.000Z","FavoriteMovies":[],"_id":"63470b0d4e87c1bf224bb01d","__v":0}</td>
                 </tr>
 
                 <tr>
                     <td>Delete movie from favorite list</td>
-                    <td>/users/:id/:movieTitle</td>
+                    <td>/users/:Username/movies/:MovieID</td>
                     <td>DELETE</td>
                     <td>:movieTitle</td>
-                    <td>---</td>
-                    <td>A text message indicating whether the Movie was removed</td>
+                    <td>A JSON object holding data about the favorite movies of the user to be deleted, structured like this: {"Username":"Justintest3","FavoriteMovie": "Inception"}</td>
+                    <td>A JSON object holding data about the user that was successfully deleted, structured like this: {"Username":"Justintest3","Password":"password","Email":"justintest@gmail.com","Birthday":"1990-01-01T05:00:00.000Z","FavoriteMovies":[],"_id":"63470b0d4e87c1bf224bb01d","__v":0}</td>
+                </tr>
                 </tr>
 
                 <tr>
                     <td>Allow existing users to deregister</td>
-                    <td>/users/:id</td>
+                    <td>/users/:Username</td>
                     <td>DELETE</td>
                     <td>:movieTitle</td>
                     <td>---</td>
