@@ -21,6 +21,12 @@ app.use(morgan('combined', {stream: accessLogStream}));
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//Cross-Origin Resource Sharing implementation
+const cors = require('cors');
+app.use(cors())
+
+const { check, validationResult } = require('express-validator');
+
 let auth = require('./auth')(app);
 
 const passport = require('passport');
@@ -32,7 +38,22 @@ app.get('/', (req, res) => {
 });
 
 // User registration
-app.post('/users', (req, res) => {
+app.post('/users', 
+[
+  check('Username', 'Username is required').isLength({min: 5}),
+  check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+  check('Password', 'Password is required').not().isEmpty(),
+  check('Email', 'Email does not appear to be valid').isEmail()
+], (req, res) => {
+
+  // check the validation object for errors
+  let errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
+
+  let hashedPassword = Users.hashPassword(req.body.Password);
   Users.findOne({ Username: req.body.Username })
     .then((user) => {
       if (user) {
@@ -40,7 +61,7 @@ app.post('/users', (req, res) => {
       } else {
         Users.create({
           Username: req.body.Username,
-          Password: req.body.Password,
+          Password: hashedPassword,
           Email: req.body.Email,
           Birthday: req.body.Birthday,
         })
@@ -96,7 +117,21 @@ app.put('/users/:Username', passport.authenticate('jwt', {session: false}), (req
 });
 
 // Add movie to user's FavoriteMovie list
-app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', {session: false}), (req, res) => {
+app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', {session: false}),
+[
+  check('Username', 'Username is required').isLength({min: 5}),
+  check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+  check('Password', 'Password is required').not().isEmpty(),
+  check('Email', 'Email does not appear to be valid').isEmail()
+], (req, res) => {
+
+  // check the validation object for errors
+  let errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
+
   Users.findOneAndUpdate({ Username: req.params.Username }, {
      $push: { Fav: req.params.MovieID }
    },
@@ -184,6 +219,7 @@ app.use((err, req, res, next) => {
     res.status(500).send('Rut roh! Looks like we have a problem!');
   });
 
-app.listen(8080, () => {
-    console.log('Your app is listening on port 8080.');
-  });
+const port = process.env.PORT || 8080;
+app.listen(port, '0.0.0.0',() => {
+ console.log('Listening on Port ' + port);
+});
