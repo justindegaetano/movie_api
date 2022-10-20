@@ -14,6 +14,7 @@ const mongoose = require('mongoose'),
     Genres = Models.Genre,
     Directors = Models.Director;
 
+    
 // mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connect('process.env.CONNECTION_URI', { useNewUrlParser: true, useUnifiedTopology: true });
 
