@@ -190,7 +190,8 @@ app.delete('/users/:Username/movies/:MovieID', passport.authenticate('jwt', {ses
 });
 
 // Return JSON object when at /movies
-app.get('/movies', passport.authenticate('jwt', {session: false}), (req, res) => {
+//Temporarily removed authentication for purpose of Exercise 3.4
+app.get('/movies', (req, res) => {
   Movies.find()
     .then((movies) => {
       res.status(201).json(movies);
