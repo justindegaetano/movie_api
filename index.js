@@ -14,9 +14,7 @@ const mongoose = require('mongoose'),
     Genres = Models.Genre,
     Directors = Models.Director;
 
-    
-// mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.CONNECTION_URI || 'mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.use(bodyParser.json());
 app.use(morgan('combined', {stream: accessLogStream}));
@@ -83,7 +81,7 @@ app.delete('/users/:Username',  passport.authenticate('jwt', {session: false}), 
   Users.findOneAndRemove({ Username: req.params.Username })
     .then((user) => {
       if (!user) {
-        res.status(400).send(req.params.Username + " was not found");
+        res.status(400).send(req.params.Username + " was not found.");
       } else {
         res.status(200).send(req.params.Username + " was deleted.");
       }
@@ -109,12 +107,13 @@ app.put('/users/:Username', [
     return res.status(422).json({ errors: errors.array() });
   }  
   
+  let hashedPassword = Users.hashPassword(req.body.Password);
   Users.findOneAndUpdate(
     { Username: req.params.Username },
     {
       $set: {
           Username: req.body.Username,
-          Password: req.body.Password,
+          Password: hashedPassword,
           Email: req.body.Email,
           Birthday: req.body.Birthday,
       },
@@ -127,6 +126,19 @@ app.put('/users/:Username', [
       } else {
         res.json(updatedUser);
       }
+    }
+  )
+});
+
+// Get user info (for Achievement 3)
+app.get('/users/:Username', passport.authenticate('jwt', {session: false}), (req, res) => {
+  Users.findOne({ Username: req.params.Username })
+    .then((user) => {
+      res.status(200).json(user);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error: " + err);
     }
   )
 });
@@ -197,7 +209,7 @@ app.get('/movies/:title', passport.authenticate('jwt', {session: false}), (req, 
   })
   .catch((err) => {
     console.error(err);
-    res.status(400).send('No movie listed.')
+    res.status(400).send('No movie listed.');
   })
 });
 
