@@ -1,12 +1,12 @@
 const passport = require('passport'),
-//defines basic HTTP authentication for login request
-LocalStrategy = require('passport-local').Strategy,
-Models = require('./models.js'),
-passportJWT = require('passport-jwt');
+  //defines basic HTTP authentication for login request
+  LocalStrategy = require('passport-local').Strategy,
+  Models = require('./models.js'),
+  passportJWT = require('passport-jwt');
 
 let Users = Models.User,
-JWTStrategy = passportJWT.Strategy,
-ExtractJWT = passportJWT.ExtractJwt;
+  JWTStrategy = passportJWT.Strategy,
+  ExtractJWT = passportJWT.ExtractJwt;
 
 passport.use(new LocalStrategy({
   //LocalStrategy takes a username and password from the request body and uses mongoose to check the database for a user with the same username but the password doesn't get checked here.
