@@ -144,13 +144,7 @@ app.get('/users/:Username', passport.authenticate('jwt', {session: false}), (req
 });
 
 // Add movie to user's FavoriteMovie list
-app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', {session: false}),
-[
-  check('Username', 'Username is required').isLength({min: 5}),
-  check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
-  check('Password', 'Password is required').not().isEmpty(),
-  check('Email', 'Email does not appear to be valid').isEmail()
-], (req, res) => {
+app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', {session: false}), (req, res) => {
 
   // check the validation object for errors
   let errors = validationResult(req);
