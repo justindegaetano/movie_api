@@ -23,7 +23,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //Cross-Origin Resource Sharing implementation
 const cors = require('cors');
-let allowedOrigins = ['http://localhost:8080', 'http://testsite.com', 'http://localhost:1234', 'https://justin-myflixdb.netlify.app/', 'https://justin-myflixdb.netlify.app'];
+let allowedOrigins = [
+  'http://localhost:8080',
+  'http://localhost:4200', 
+  'http://testsite.com', 
+  'http://localhost:1234', 
+  'https://justin-myflixdb.netlify.app/', 
+  'https://justin-myflixdb.netlify.app'
+];
 
 app.use(cors({
   origin: (origin, callback) => {
