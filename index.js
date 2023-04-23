@@ -28,9 +28,8 @@ let allowedOrigins = [
   'http://localhost:4200', 
   'http://testsite.com', 
   'http://localhost:1234', 
-  'https://justin-myflixdb.netlify.app/', 
   'https://justin-myflixdb.netlify.app',
-  'https://justindegaetano.github.io/'
+  'https://justindegaetano.github.io'
 ];
 
 app.use(cors({
