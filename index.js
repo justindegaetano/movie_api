@@ -215,7 +215,7 @@ app.get('/movies', passport.authenticate('jwt', {session: false}), (req, res) =>
 
 // Get JSON movie info when searching specific title
 app.get('/movies/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
-  Movies.findOne({ Title: req.params.id})
+  Movies.findOne({ id: req.params._id})
   .then((movie) => {
     res.status(200).json(movie);
   })
